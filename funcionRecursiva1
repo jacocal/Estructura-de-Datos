@@ -1,0 +1,50 @@
+// Sebastián Galguera A01016708 para V Cubells.
+// Función recursiva para matriz 1 de la Tarea 1
+// Para cambiar el tamaño de la matriz, modifique el número 5 al valor que desee.
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+
+
+int matriz(int size, int potencia, int arreglo[5][5], int pos, int x)
+{
+    if (pos == size)
+    {
+        return 0;
+    }
+    else if (pos < size)
+    {
+        if (x < size)
+        {
+            arreglo[pos][pos] = pow (2, potencia);
+            arreglo[pos][x] = pow (2, potencia);
+            arreglo[x][pos] = pow (2, potencia);
+            return matriz(size, potencia, arreglo, pos, ++x);
+        }
+        else
+        {
+            x = pos+1;
+            return matriz(size, ++potencia, arreglo, ++pos, x);  
+        }
+    }
+}
+
+void imprimir(int size, int arreglo[5][5])
+{
+for (int a = 0; a < size; a++)
+    {
+          for (int b = 0; b < size; b++)
+        {
+              std::cout <<  arreglo[b][a];
+        }
+              std::cout << std::endl;
+    }
+}
+
+int main()
+{
+    int size = 5, potencia = 0, pos = 0, x = 0;
+    int arreglo[5][5];
+    matriz(size, potencia, arreglo, pos, x);
+    imprimir(size, arreglo);
+}
