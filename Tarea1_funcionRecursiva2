@@ -8,10 +8,24 @@
 
 #define traye 10
 
-
-
 using namespace std;
 
+void imprimir(const int (&arregloA)[traye][traye], int size) {
+    for (int a = 0; a < size; ++a) {
+       for (int b = 0; b < size; ++b) {
+            if (arregloA[a][b] == -1)
+            {
+                cout << "" << arregloA[a][b] << "";
+            }
+            else
+            {
+                cout << " " << arregloA[a][b] << "";
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
 
 
 void laberinto(int (&arregloA)[traye][traye], int prima, int posX = 0, int posY = 0);
@@ -55,22 +69,6 @@ void laberinto(int (&arregloA)[traye][traye], int prima, int posX, int posY) {
         return;
     }
 }
-
-
-
-void imprimir(const int (&arregloA)[traye][traye], int size) {
-    for (int a = 0; a < size; ++a) {
-       for (int b = 0; b < size; ++b) {
-            if (arregloA[a][b] == -1)
-                cout << "" << arregloA[a][b] << "";
-            else
-                cout << " " << arregloA[a][b] << "";
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
 
 int main()
 
