@@ -1,0 +1,107 @@
+// Sebastián Galguera A01016708 para V Cubells.
+// Función recursiva para matriz 1 de la Tarea 1
+// Para cambiar el tamaño de la matriz, modifique el número 5 al valor que desee.
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+
+
+#define traye 10
+
+
+
+using namespace std;
+
+
+
+void laberinto(int (&arregloA)[traye][traye], int prima, int posX = 0, int posY = 0);
+void imprimir(const int (&arregloA)[traye][traye], int prima);
+void laberinto(int (&arregloA)[traye][traye], int prima, int posX, int posY) {
+    if (posX == prima - 1 && posY == prima - 1) {
+        arregloA[posX][posY] = 3;
+        return;
+    }
+    else {
+        if (arregloA[posX][posY + 1] == 0 && posY != prima - 1) {
+            arregloA[posX][posY] = 3;
+            ++posY;
+        }
+        else if (arregloA[posX + 1][posY] == 0 && posX != prima - 1) {
+            arregloA[posX][posY] = 3;
+            ++posX;
+        }
+        else if (arregloA[posX][posY - 1] == 0 && posY != 0) {
+            arregloA[posX][posY] = 3;
+            --posY;
+        }
+        else if (arregloA[posX - 1][posY] == 0 && posX != 0) {
+            arregloA[posX][posY] = 3;
+            --posX;
+        }
+        else {
+            arregloA[posX][posY] = 3;
+            if (arregloA[posX][posY - 1] == 3 && posY != 0)
+                --posY;
+            else if (arregloA[posX + 1][posY] == 3 && posX != prima - 1)
+                ++posX;
+            else if (arregloA[posX][posY + 1] == 3 && posY != prima - 1)
+                ++posY;
+            else if (arregloA[posX - 1][posY] == 3 && posX != 0)
+                --posX;
+            else
+                return;
+        }
+        laberinto(arregloA, prima, posX, posY);
+        return;
+    }
+}
+
+
+
+void imprimir(const int (&arregloA)[traye][traye], int size) {
+    for (int a = 0; a < size; ++a) {
+       for (int b = 0; b < size; ++b) {
+            if (arregloA[a][b] == -1)
+                cout << "" << arregloA[a][b] << "";
+            else
+                cout << " " << arregloA[a][b] << "";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+
+int main()
+
+{
+
+    int arregloA[traye][traye] = {
+
+        { 0,  0, -1, -1, -1, -1, -1, -1, -1, -1},
+
+        {-1,  0, -1, -1,  0,  0,  0,  0, -1, -1},
+
+        {-1,  0,  0,  0,  0, -1, -1,  0, -1, -1},
+
+        { 0, -1, -1, -1, -1,  0,  0,  0, -1, -1},
+
+        { 0, -1,  0,  0,  0, -1,  0, -1, -1, -1},
+
+        { 0, -1,  0, -1, -1, -1,  0,  0,  0,  0},
+
+        { 0,  0,  0,  0, -1,  0,  0, -1, -1,  0},
+
+        {-1, -1, -1,  0, -1,  0, -1, -1,  0,  0},
+
+        {-1,  0,  0,  0,  0,  0, -1, -1,  0, -1},
+
+        {-1,  0, -1, -1, -1,  0,  0, -1,  0,  0}
+
+    };
+    std:: cout << "Bienvenido al laberinto de Sebastián Galguera! " << std:: endl;
+    std:: cout << "El camino sugerido se marcará con un 3: " << std:: endl;
+    laberinto(arregloA, traye);
+    imprimir(arregloA, traye);
+    return 0;
+}
