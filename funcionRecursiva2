@@ -1,5 +1,5 @@
 // Sebastián Galguera A01016708 para V Cubells.
-// Función recursiva para matriz 2 de la Tarea 1.
+// Función recursiva para matriz 2 de la Tarea 1
 // Para cambiar el tamaño de la matriz, modifique la variable traye y cambie los elementos del arreglo.
 #include <iostream>
 #include <stdio.h>
