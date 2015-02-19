@@ -1,0 +1,77 @@
+
+
+#include <iostream>
+
+
+using namespace std;
+
+
+int decimal;
+
+
+void convertir(int decimal)
+
+{
+
+    int auxiliar;
+
+    if (decimal == 0)
+
+    {
+
+        return;
+
+    }
+
+    auxiliar = decimal % 16;
+
+    decimal = decimal / 16;
+
+    convertir(decimal);
+
+    if (auxiliar >= 10)
+
+    {
+
+        std::cout << char(auxiliar + 55);
+
+    }
+
+    else
+
+    {
+
+        std::cout << "Su número convertido es: "<< auxiliar;
+
+    }
+
+    
+
+}
+
+
+
+int main()
+
+
+{
+
+    std::cout << "Bienvenido al convertidor de Decimales a Hexadecimales T9-1894: " << endl;
+
+    std::cout << "Por favor inserte su decimal: ";
+
+    std::cin >> decimal;
+
+    convertir(decimal);
+
+    std::cout << endl;
+
+    std::cout << "Gracias por su preferencia!";
+
+    std::cout << endl;
+
+    return 0;
+
+    
+
+}
