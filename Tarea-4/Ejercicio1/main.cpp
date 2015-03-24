@@ -1,6 +1,6 @@
 #include <iostream>
 #include "token.cpp"
-#include "computadora.cpp"
+#include "computadora.h"
 #include "listaEnlazadaCircular.h"
 
 using namespace std;
